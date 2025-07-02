@@ -1,61 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Departments - The Complex</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f4f7fa;
-    margin: 0; padding: 0;
-  }
-  header {
-    background: #2c3e50;
-    color: white;
-    padding: 10px 20px;
-    display: flex; align-items: center;
-  }
-  header img {
-    height: 40px;
-    width: 40px;
-    cursor: pointer;
-  }
-  header h2 {
-    margin-left: 12px;
-  }
-  main {
-    max-width: 900px;
-    margin: 40px auto;
-    background: white;
-    padding: 20px 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgb(0 0 0 / 0.1);
-  }
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  li {
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Departments</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #003366;
+    }
+
+    details {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      background: #f9f9f9;
+    }
+
+    summary {
+      font-weight: bold;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .subdetails {
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 40px;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <a href="index.html"><img src="assets/logo.png" alt="Logo" /></a>
-  <h2>The Complex - Departments</h2>
-</header>
-<main>
-  <h1>Departments</h1>
-  <ul>
-    <li>Security</li>
-    <li>Medical</li>
-    <li>Operations</li>
-    <li>Control Room</li>
-    <li>Administration</li>
-  </ul>
-</main>
+  <img src="YOUR_LOGO_URL_HERE" class="logo" alt="Logo">
+
+  <div class="container">
+    <h1>Department Overview</h1>
+
+    <details>
+      <summary>Security Department</summary>
+      <div class="subdetails">
+        <details>
+          <summary>Security department</summary>
+          <p>Details or description for Security department here if needed.</p>
+        </details>
+      </div>
+    </details>
+
+    <details>
+      <summary>Internal Security Department</summary>
+      <div class="subdetails">
+        <details>
+          <summary>Heavy</summary>
+          <p>Details or description for Heavy if needed.</p>
+        </details>
+        <details>
+          <summary>Hammer down</summary>
+          <p>Details or description for Hammer down if needed.</p>
+        </details>
+        <details>
+          <summary>Riot control</summary>
+          <p>Details or description for Riot control if needed.</p>
+        </details>
+      </div>
+    </details>
+
+    <details>
+      <summary>Operations Department</summary>
+      <div class="subdetails">
+        <details>
+          <summary>Operative</summary>
+          <p>Details or description for Operative if needed.</p>
+        </details>
+        <details>
+          <summary>Hitman</summary>
+          <p>Details or description for Hitman if needed.</p>
+        </details>
+      </div>
+    </details>
+  </div>
 </body>
 </html>

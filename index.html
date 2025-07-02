@@ -1,79 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Complex - Landing</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background-color: #f4f6f8;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-    }
-    header img {
-      height: 40px;
-      width: 40px;
-      cursor: pointer;
-    }
-    header h2 {
-      margin-left: 12px;
-    }
-    main {
-      max-width: 600px;
-      margin: auto;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      background-color: #2c3e50;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-    .btn:hover {
-      background-color: #1a252f;
-    }
-    footer {
-      margin-top: 30px;
-      text-align: center;
-    }
-    footer button {
-      padding: 10px 20px;
-      background: #27ae60;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    footer button:hover {
-      background: #1e8449;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Complex - Landing</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fa;
+    margin: 0; padding: 0;
+  }
+  header {
+    background: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    display: flex; align-items: center;
+  }
+  header img {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+  }
+  header h1 {
+    margin-left: 12px;
+  }
+  main {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 0.1);
+    text-align: center;
+  }
+  nav button, nav a.button {
+    background: #34495e;
+    border: none;
+    padding: 12px 24px;
+    margin: 12px 8px;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  nav button:hover, nav a.button:hover {
+    background: #2c3d50;
+  }
+  footer {
+    margin-top: 50px;
+    color: #888;
+    font-size: 0.9em;
+  }
+  .discord-link {
+    margin-top: 30px;
+    display: inline-flex;
+    align-items: center;
+    color: #7289da;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-decoration: none;
+  }
+  .discord-link img {
+    height: 28px;
+    width: 28px;
+    margin-right: 8px;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <a href="index.html"><img src="assets/logo.png" alt="Logo" /></a>
-    <h2>The Complex</h2>
-  </header>
-  <main>
-    <h1>Welcome to The Complex</h1>
-    <p>The hub for the Roblox game "Town" by decodeunicode. Civilians can access general information and rules.</p>
-    <a href="rules.html" class="btn">📘 View Rules</a>
-    <a href="civilian.html" class="btn">📁 Civilian Resources</a>
-  </main>
-  <footer>
-    <button onclick="location.href='login.html'">🔐 Login</button>
-  </footer>
+<header>
+  <a href="index.html"><img src="assets/logo.png" alt="The Complex Logo" /></a>
+  <h1>The Complex</h1>
+</header>
+<main>
+  <h2>Welcome to The Complex</h2>
+  <p>Your hub for Roblox "Town" community resources.</p>
+  <nav>
+    <a href="civilian.html" class="button">Civilian Resources</a>
+    <a href="rules.html" class="button">Rules</a>
+    <a href="guide.html" class="button">Guide</a>
+  </nav>
+  <a href="login.html" class="button" style="margin-top:40px;">Login</a>
+  <br/>
+  <a href="#" class="discord-link" id="discordLink">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" />
+    Join the Discord Server
+  </a>
+</main>
+<footer>
+  &copy; 2025 The Complex
+</footer>
+<script>
+  // Placeholder Discord link - update with your server link
+  document.getElementById('discordLink').href = "https://discord.gg/ghBxwxPVdg";
+</script>
 </body>
 </html>

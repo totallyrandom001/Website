@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <title>Departments</title>
   <style>
+    details[open] {
+  animation: none;
+}
+
+details[open] > summary ~ * {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
     body {
       margin: 0;
       background: #f4f4f4;

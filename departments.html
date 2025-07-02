@@ -37,25 +37,30 @@
     h1 {
       margin-bottom: 20px;
     }
-    label {
-      display: block;
+    details {
       margin-top: 20px;
-      font-weight: bold;
-    }
-    select, input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
+      padding: 10px 15px;
+      background: #fafafa;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+    }
+    .subdepartment {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+    input[type="text"] {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
       font-size: 14px;
-    }
-    .field-group {
-      margin-top: 20px;
-      display: none;
-    }
-    .field-group input {
-      margin-top: 8px;
     }
   </style>
 </head>
@@ -67,75 +72,60 @@
   <main>
     <h1>Departments</h1>
 
-    <label for="sd">Security Department</label>
-    <select id="sd">
-      <option value="">-- Select --</option>
-      <option value="security">SECURİTY Department</option>
-    </select>
-    <div class="field-group" id="fields-security">
-      <input type="text" placeholder="Security Info 1" />
-      <input type="text" placeholder="Security Info 2" />
-      <input type="text" placeholder="Security Info 3" />
-    </div>
+    <details>
+      <summary>Security Department</summary>
+      <div class="subdepartment">
+        <details>
+          <summary>SECURITY Department</summary>
+          <input type="text" placeholder="Info 1" />
+          <input type="text" placeholder="Info 2" />
+          <input type="text" placeholder="Info 3" />
+        </details>
+      </div>
+    </details>
 
-    <label for="isd">Internal Security Department</label>
-    <select id="isd">
-      <option value="">-- Select --</option>
-      <option value="heavy">Heavy</option>
-      <option value="hammer">Hammer down</option>
-      <option value="riot">Riot control</option>
-    </select>
-    <div class="field-group" id="fields-heavy">
-      <input type="text" placeholder="Heavy Info 1" />
-      <input type="text" placeholder="Heavy Info 2" />
-      <input type="text" placeholder="Heavy Info 3" />
-    </div>
-    <div class="field-group" id="fields-hammer">
-      <input type="text" placeholder="Hammer Down Info 1" />
-      <input type="text" placeholder="Hammer Down Info 2" />
-      <input type="text" placeholder="Hammer Down Info 3" />
-    </div>
-    <div class="field-group" id="fields-riot">
-      <input type="text" placeholder="Riot Control Info 1" />
-      <input type="text" placeholder="Riot Control Info 2" />
-      <input type="text" placeholder="Riot Control Info 3" />
-    </div>
+    <details>
+      <summary>Internal Security Department</summary>
+      <div class="subdepartment">
+        <details>
+          <summary>Heavy</summary>
+          <input type="text" placeholder="Heavy Info 1" />
+          <input type="text" placeholder="Heavy Info 2" />
+          <input type="text" placeholder="Heavy Info 3" />
+        </details>
+        <details>
+          <summary>Hammer down</summary>
+          <input type="text" placeholder="Hammer Down Info 1" />
+          <input type="text" placeholder="Hammer Down Info 2" />
+          <input type="text" placeholder="Hammer Down Info 3" />
+        </details>
+        <details>
+          <summary>Riot control</summary>
+          <input type="text" placeholder="Riot Control Info 1" />
+          <input type="text" placeholder="Riot Control Info 2" />
+          <input type="text" placeholder="Riot Control Info 3" />
+        </details>
+      </div>
+    </details>
 
-    <label for="od">Operations Department</label>
-    <select id="od">
-      <option value="">-- Select --</option>
-      <option value="hitman">Hitman</option>
-      <option value="operative">Operative</option>
-    </select>
-    <div class="field-group" id="fields-hitman">
-      <input type="text" placeholder="Hitman Info 1" />
-      <input type="text" placeholder="Hitman Info 2" />
-      <input type="text" placeholder="Hitman Info 3" />
-    </div>
-    <div class="field-group" id="fields-operative">
-      <input type="text" placeholder="Operative Info 1" />
-      <input type="text" placeholder="Operative Info 2" />
-      <input type="text" placeholder="Operative Info 3" />
-    </div>
+    <details>
+      <summary>Operations Department</summary>
+      <div class="subdepartment">
+        <details>
+          <summary>Hitman</summary>
+          <input type="text" placeholder="Hitman Info 1" />
+          <input type="text" placeholder="Hitman Info 2" />
+          <input type="text" placeholder="Hitman Info 3" />
+        </details>
+        <details>
+          <summary>Operative</summary>
+          <input type="text" placeholder="Operative Info 1" />
+          <input type="text" placeholder="Operative Info 2" />
+          <input type="text" placeholder="Operative Info 3" />
+        </details>
+      </div>
+    </details>
+
   </main>
-
-  <script>
-    function handleDropdown(selectId, baseId) {
-      const select = document.getElementById(selectId);
-      const allFields = document.querySelectorAll(`[id^="fields-${baseId}"]`);
-
-      select.addEventListener("change", () => {
-        allFields.forEach(group => group.style.display = "none");
-
-        const selected = select.value;
-        const showGroup = document.getElementById(`fields-${selected}`);
-        if (showGroup) showGroup.style.display = "block";
-      });
-    }
-
-    handleDropdown("sd", "security");
-    handleDropdown("isd", "");
-    handleDropdown("od", "");
-  </script>
 </body>
 </html>

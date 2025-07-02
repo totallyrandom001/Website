@@ -2,121 +2,140 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Departments</title>
-  <link rel="icon" href="your-logo-url-here" />
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f5f6f8;
+      background: #f4f7fa;
       margin: 0;
       padding: 0;
     }
-
     header {
-      background-color: #1d1f21;
+      background: #2c3e50;
       color: white;
       padding: 10px 20px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
     }
-
     header img {
-      height: 32px;
+      height: 40px;
+      width: 40px;
       cursor: pointer;
     }
-
-    h1 {
-      text-align: center;
-      margin: 30px 0 20px;
-      font-size: 28px;
-      color: #333;
+    header h2 {
+      margin-left: 12px;
     }
-
-    .dropdown-container {
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    details {
+    main {
+      max-width: 900px;
+      margin: 40px auto;
       background: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      font-size: 16px;
-      transition: all 0.2s ease;
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgb(0 0 0 / 0.1);
     }
-
-    summary {
+    h1 {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
       font-weight: bold;
-      cursor: pointer;
-      list-style: none;
-      font-size: 16px;
     }
-
-    details[open] {
-      background-color: #f0f2f5;
+    select, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
     }
-
-    ul {
-      padding-left: 20px;
-      margin: 10px 0 0;
-    }
-
-    ul li {
-      margin: 6px 0;
-    }
-
-    /* Remove default triangle */
-    summary::-webkit-details-marker {
+    .field-group {
+      margin-top: 20px;
       display: none;
     }
-
-    
-
-    
-
-    @media screen and (max-width: 600px) {
-      h1 {
-        font-size: 24px;
-      }
+    .field-group input {
+      margin-top: 8px;
     }
   </style>
+</head>
 <body>
   <header>
     <a href="index.html"><img src="assets/logo.png" alt="Logo" /></a>
     <h2>The Complex</h2>
   </header>
+  <main>
+    <h1>Departments</h1>
 
-  <h1>Department Roles</h1>
-  <div class="dropdown-container">
-    <details>
-      <summary>Security Department</summary>
-      <ul>
-        <li>Security Department</li>
-      </ul>
-    </details>
+    <label for="sd">Security Department</label>
+    <select id="sd">
+      <option value="">-- Select --</option>
+      <option value="security">SECURİTY Department</option>
+    </select>
+    <div class="field-group" id="fields-security">
+      <input type="text" placeholder="Security Info 1" />
+      <input type="text" placeholder="Security Info 2" />
+      <input type="text" placeholder="Security Info 3" />
+    </div>
 
-    <details>
-      <summary>Internal Security Department</summary>
-      <ul>
-        <li>Heavy</li>
-        <li>Hammer Down</li>
-        <li>Riot Control</li>
-      </ul>
-    </details>
+    <label for="isd">Internal Security Department</label>
+    <select id="isd">
+      <option value="">-- Select --</option>
+      <option value="heavy">Heavy</option>
+      <option value="hammer">Hammer down</option>
+      <option value="riot">Riot control</option>
+    </select>
+    <div class="field-group" id="fields-heavy">
+      <input type="text" placeholder="Heavy Info 1" />
+      <input type="text" placeholder="Heavy Info 2" />
+      <input type="text" placeholder="Heavy Info 3" />
+    </div>
+    <div class="field-group" id="fields-hammer">
+      <input type="text" placeholder="Hammer Down Info 1" />
+      <input type="text" placeholder="Hammer Down Info 2" />
+      <input type="text" placeholder="Hammer Down Info 3" />
+    </div>
+    <div class="field-group" id="fields-riot">
+      <input type="text" placeholder="Riot Control Info 1" />
+      <input type="text" placeholder="Riot Control Info 2" />
+      <input type="text" placeholder="Riot Control Info 3" />
+    </div>
 
-    <details>
-      <summary>Operations Department</summary>
-      <ul>
-        <li>Operative</li>
-        <li>Hitman</li>
-      </ul>
-    </details>
-  </div>
+    <label for="od">Operations Department</label>
+    <select id="od">
+      <option value="">-- Select --</option>
+      <option value="hitman">Hitman</option>
+      <option value="operative">Operative</option>
+    </select>
+    <div class="field-group" id="fields-hitman">
+      <input type="text" placeholder="Hitman Info 1" />
+      <input type="text" placeholder="Hitman Info 2" />
+      <input type="text" placeholder="Hitman Info 3" />
+    </div>
+    <div class="field-group" id="fields-operative">
+      <input type="text" placeholder="Operative Info 1" />
+      <input type="text" placeholder="Operative Info 2" />
+      <input type="text" placeholder="Operative Info 3" />
+    </div>
+  </main>
+
+  <script>
+    function handleDropdown(selectId, baseId) {
+      const select = document.getElementById(selectId);
+      const allFields = document.querySelectorAll(`[id^="fields-${baseId}"]`);
+
+      select.addEventListener("change", () => {
+        allFields.forEach(group => group.style.display = "none");
+
+        const selected = select.value;
+        const showGroup = document.getElementById(`fields-${selected}`);
+        if (showGroup) showGroup.style.display = "block";
+      });
+    }
+
+    handleDropdown("sd", "security");
+    handleDropdown("isd", "");
+    handleDropdown("od", "");
+  </script>
 </body>
 </html>

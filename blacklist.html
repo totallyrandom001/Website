@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blacklist Search - The Complex</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+  .container {
+    max-width: 800px;
+    margin: auto;
+  }
+  .search-box {
+    background: #f0f0f0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+  }
+  .search-box h2 {
+    margin-top: 0;
+  }
+  #userInput {
+    font-size: 22px;
+    padding: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+  }
+  #results {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  .entry {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    position: relative;
+  }
+  .entry .kos {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    color: red;
+    font-weight: 900;
+    font-size: 26px;
+    user-select: none;
+  }
+  .entry .sb {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    color: green;
+    font-weight: bold;
+    font-size: 14px;
+    background: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    user-select: none;
+  }
+  .entry a {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 15px;
+  }
+  .last-updated {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 14px;
+    color: #666;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="search-box">
+    <h2>Blacklist Search</h2>
+    <input type="text" id="userInput" placeholder="Type any part of a username..." autocomplete="off" />
+    <div id="results"></div>
+    <div class="last-updated">
+      Last updated: <span id="lastUpdated"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+// Last updated date (DD/MM/YYYY)
+const lastUpdatedDate = "21/06/2025";
+
+// Your exact blacklist data
+const blacklist = [
+  { username: "Jarstella", reason: "raiding", kos: false },
+  { username: "rolsin554", reason: "Killed me 1x, Attempted Murder on Chief of Security, Threatened to Glitch in.", kos: false },
+  { username: "NVA_Deti", reason: "Glitched into base after being killed multiple times, suspicious aim, being a asshole", kos: true},
+  { username: "bndnn41", reason: "Possession of a weapon inside base, killing high profile staff (second degree murder)", kos: false },
+  { username: "huyfungngu876", reason: "possession of weapons, refusing to comply with instructions", kos: false },
+  { username: "Dest_Best2011", reason: "Tried to trick us by dropping all weapons except one, tried to raid after.", kos: false },
+  { username: "RIP_AHDOH", reason: "raiding", kos: false },
+  { username: "glizzystrap2lol", reason: "accused of raiding by a guard, not taking any chances", kos: false },
+  { username: "KbwtQNcsqH", reason: "raiding", kos: false },
+  { username: "ksuha_1553", reason: "murder of guards", kos: false },
+  { username: "djon_mckain", reason: "glitching", kos: true },
+  { username: "egg_susus", reason: "killing guards, attempting to seize CR", kos: true },
+  { username: "ThyOwnMother", reason: "Disrespectful pile of crap.", kos: false },
+  { username: "tost123441", reason: "raided", kos: true },
+  { username: "UN58146373", reason: "attempting to pose as a guard to fool the dumbass CR operator", kos: false },
+  { username: "asiiantechsupport", reason: "raiding", kos: false },
+  { username: "ma4ythr", reason: "raiding", kos: false },
+  { username: "lococosmico28", reason: "raiding", kos: false },
+  { username: "itznour_playing", reason: "fired", kos: false },
+  { username: "afgdgzdg73", reason: "bitch", kos: false },
+  { username: "alligatore88", reason: "murder of staff", kos: false },
+  { username: "shaun_282014", reason: "possession of weapons, attempted murder on staff", kos: false },
+  { username: "gemslootfarm", reason: "banned permanently, bounty on head", kos: true },
+  { username: "grimsalt7", reason: "Raiding. PVP skills high, beware.", kos: false },
+  { username: "michal123456pal", reason: "threatening, inappropriate behavior (too many to count), using the N word (x2), and a lot more", kos: true },
+  { username: "p1nkf1ow3", reason: "pulling a gun, illegal possession of weapon", kos: false },
+  { username: "unruly_day", reason: "raid attempt", kos: false },
+  { username: "appletree073", reason: "failure to comply", kos: false, sb: true },
+  { username: "trickyevanawesome", reason: "smuggling weapons in", kos: false },
+  { username: "kuba2810", reason: "Raiding. PVP skills high, beware.", kos: false },
+  { username: "jekat5", reason: "Raiding. PVP skills high, beware.", kos: false },
+  { username: "nerp_0999", reason: "Raiding. PVP skills high, beware.", kos: false },
+  { username: "mausieepro", reason: "impersonating a guard", kos: false },
+  { username: "trexalphaone", reason: "impersonating a guard", kos: false },
+  { username: "devilish_chains", reason: "raiding", kos: false },
+  { username: "ashtonmonster702", reason: "attempted murder on guards", kos: true },
+  { username: "comradeneptune", reason: "attempted to murder guards", kos: true },
+  { username: "ruyeonn11", reason: "failure to comply", kos: false, sb: true },
+  { username: "jonisujoni", reason: "raid", kos: false },
+  { username: "kenzie656787", reason: "failure to comply", kos: false, sb: true },
+  { username: "louieloopinglouie", reason: "glitching", kos: false },
+  { username: "agf_te4m", reason: "smuggling guns", kos: false },
+  { username: "AMOGUS_1345ye", reason: "raid", kos: false },
+  { username: "xvgamer256", reason: "raiding, attempted murder on guards", kos: true },
+  { username: "meiresz", reason: "raiding", kos: false },
+  { username: "shadowchas3rrr", reason: "raiding", kos: false },
+  { username: "ssdss11", reason: "raiding", kos: false },
+  { username: "zinarr2007", reason: "raiding", kos: true },
+  { username: "makuaka3", reason: "raiding", kos: false },
+  { username: "alexgsm54", reason: "raiding", kos: false },
+  { username: "jaimen1nja", reason: "raiding", kos: false },
+  { username: "firestar12101", reason: "raiding", kos: false },
+  { username: "biggest12071", reason: "raiding", kos: false },
+  { username: "frutellkins1", reason: "raiding", kos: true },
+  { username: "churkisositehuy", reason: "sweat, attacked our members", kos: true },
+  { username: "iwannabealoneg", reason: "furry", kos: false },
+  { username: "kalajokipieru", reason: "smuggling guns", kos: false },
+  { username: "wolven2001", reason: "raiding (2 murders), lying", kos: true },
+  { username: "Taplessdog", reason: "resigned", kos: false },
+  { username: "egort_76", reason: "failure to comply", kos: false, sb: true },
+  { username: "noobman97512", reason: "resigned", kos: false },
+  { username: "yuur1_ch1to", reason: "raiding", kos: true },
+  { username: "vawilov", reason: "entered guards only zone: solitary", sb: true },
+  { username: "vecomega", reason: "raiding", kos: false },
+  { username: "joniwichk", reason: "self interest", kos: false },
+  { username: "lucaani2", reason: "entering guard only zones", sb: true },
+  { username: "danfkvdg", reason: "Failure to comply", sb: true },
+  { username: "nagoproco", reason: "Failure to comply", sb: true },
+  { username: "alex2412_UA", reason: "Failure to comply", sb: true },
+];
+
+// Create Roblox search URL for any username
+function createRobloxSearchLink(username) {
+  return `https://www.roblox.com/search/users?keyword=${encodeURIComponent(username)}`;
+}
+
+// Create Roblox profile URL for direct profile view
+function createRobloxProfileLink(username) {
+  return `https://www.roblox.com/users/${encodeURIComponent(username)}/profile`;
+}
+
+function updateResults() {
+  const input = document.getElementById("userInput").value.trim().toLowerCase();
+  const results = document.getElementById("results");
+  results.innerHTML = "";
+
+  if (input.length === 0) return;
+
+  // Find matching users by username containing input
+  const matches = blacklist.filter(entry => entry.username.toLowerCase().includes(input));
+
+  if (matches.length === 0) {
+    // No blacklist entries found
+    results.innerHTML = `
+      <div class="entry">
+        <div><strong>👤 ${input}</strong></div>
+        <div style="color: green;">NO ENTRIES FOUND</div>
+        <div style="margin-top: 8px;">
+          <a href="${createRobloxSearchLink(input)}" target="_blank">🔍 Search in Roblox Users</a>
+        </div>
+      </div>`;
+    return;
+  }
+
+  // Map matches to HTML entries
+  results.innerHTML = matches.map(entry => `
+    <div class="entry">
+      ${entry.kos ? `<div class="kos">!</div>` : ""}
+      ${entry.sb ? `<div class="sb">SB</div>` : ""}
+      <div><strong>👤 ${entry.username}</strong></div>
+      <div>📜 ${entry.reason}</div>
+      <div style="margin-top: 8px;">
+        <a href="${createRobloxSearchLink(entry.username)}" target="_blank">🔍 Search in Roblox Users</a>
+        <a href="${createRobloxProfileLink(entry.username)}" target="_blank">🔗 View on Roblox</a>
+      </div>
+    </div>
+  `).join("");
+}
+
+document.getElementById("userInput").addEventListener("input", updateResults);
+document.getElementById("lastUpdated").innerText = lastUpdatedDate;
+</script>
+</body>
+</html>

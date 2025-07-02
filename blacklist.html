@@ -70,25 +70,109 @@
     right: 12px;
     color: green;
     font-weight: bold;
-    font-size: 14px;
-    background: #fff;
-    padding: 2px 6px;
-    border-radius: 4px;
-    box-shadow: 0 0 4px rgba(0,0,0,0.1);
-    user-select: none;
-  }
-  .entry a {
-    text-decoration: none;
-    color: #007bff;
-    margin-right: 15px;
-  }
-  .last-updated {
-    position: absolute;
-    bottom: 8px;
-    right: 16px;
-    font-size: 14px;
-    color: #666;
-  }
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+header {
+  background: #2c3e50;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+header img {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  object-fit: contain;
+  user-select: none;
+}
+header h2 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+  user-select: none;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+.search-box {
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: relative;
+}
+.search-box h2 {
+  margin-top: 0;
+}
+#userInput {
+  font-size: 22px;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+#results {
+  margin-top: 20px;
+  font-weight: bold;
+}
+.entry {
+  margin-bottom: 15px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  position: relative;
+}
+.entry .kos {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  color: red;
+  font-weight: 900;
+  font-size: 26px;
+  user-select: none;
+}
+.entry .sb {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  color: green;
+  font-weight: bold;
+  font-size: 14px;
+  background: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  user-select: none;
+}
+.entry a {
+  text-decoration: none;
+  color: #007bff;
+  margin-right: 15px;
+}
+.last-updated {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 14px;
+  color: #666;
+}
+
 </style>
 </head>
 <body>

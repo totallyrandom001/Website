@@ -3,18 +3,22 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CR Guide</title>
+<title>CR Guide - The Complex</title>
 <style>
   body {
     font-family: Arial, sans-serif;
     background: #f4f7fa;
-    margin: 0; padding: 0;
+    margin: 0; 
+    padding: 0;
+    color: #333;
   }
   header {
     background: #2c3e50;
     color: white;
-    padding: 10px 20px;
-    display: flex; align-items: center;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   }
   header img {
     height: 40px;
@@ -23,54 +27,92 @@
   }
   header h2 {
     margin-left: 12px;
+    font-weight: 600;
   }
   main {
     max-width: 900px;
     margin: 40px auto;
     background: white;
-    padding: 20px 40px;
+    padding: 30px 40px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgb(0 0 0 / 0.1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    line-height: 1.6;
+    white-space: pre-line;
   }
-  h1 {
-    margin-bottom: 20px;
-  }
-  p, ul, ol {
-    line-height: 1.5;
-  }
-  a {
+  h3 {
+    margin-top: 1.5em;
     color: #2c3e50;
-    text-decoration: underline;
+    font-weight: 700;
+  }
+  ul {
+    margin-left: 20px;
+    margin-top: 0.5em;
+  }
+  p.note {
+    background: #e7f1ff;
+    border-left: 5px solid #2c3e50;
+    padding: 10px 15px;
+    margin-top: 20px;
+    font-style: italic;
+    color: #1b1f24;
   }
 </style>
 </head>
 <body>
 <header>
   <a href="index.html"><img src="assets/logo.png" alt="Logo" /></a>
-  <h2>The Complex</h2>
+  <h2>The Complex - CR Guide</h2>
 </header>
 <main>
-  <h1>Control Room Guide</h1>
-  <p><strong>Laptop:</strong> Facility CCTV</p>
-  <p><strong>Old monitor:</strong> Airlock & Term room exit CCTV</p>
-  <p><strong>Blue button:</strong> Inner door</p>
-  <p><strong>Brown button:</strong> Term door unlock (Leave pressed)</p>
-  <p><strong>Right buttons:</strong> Cell doors unlock</p>
-  <p><strong>Bottom right:</strong> All doors lock, Emergency lockdown</p>
-  <p><strong>Top right:</strong> Reset emergency lockdown</p>
-  <p><strong>Yellow button:</strong> Medical bay</p>
-  <p><strong>Green button:</strong> Food room</p>
-  <p><strong>Orange button:</strong> Locker room</p>
-  <p><strong>Door button:</strong> Opens all cell doors</p>
-  <p><strong>Card button:</strong> Shows cards status</p>
-  <p><strong>Green light:</strong> Card active</p>
-  <p><strong>Red light:</strong> Card inactive</p>
-  <p><strong>Keycard reader on monitor:</strong> Use keycard to open airlock door</p>
-  <p><strong>Blue locked door:</strong> Term hallway door, can only be opened with card</p>
-  <p><strong>Camera system:</strong> Use to monitor activity throughout the facility</p>
-  <p><strong>Control room operator duties:</strong> Monitor CCTV, control doors, manage lockdowns</p>
-  <p><strong>Note:</strong> Always communicate with security when initiating lockdowns</p>
+<p><strong>Laptop:</strong> Facility CCTV / <strong>Old monitor:</strong> Airlock &amp; Term room exit CCTV</p>
+<p><strong>Blue button:</strong> Inner door</p>
+<p><strong>Brown button:</strong> Term door unlock (leave pressed)</p>
+<p><strong>Black button:</strong> Lockdown</p>
+<p><strong>LD indicator:</strong> N/A</p>
+<p><strong>Small red button:</strong> Term room window override in case of emergency</p>
+<p><strong>Red button:</strong> Outer door</p>
+<p><strong>Small brown button:</strong><br />
+Gives guards a visual cue to terminate everyone in the airlock</p>
+<p><strong>Small green button:</strong><br />
+Gives guards a visual cue to terminate everyone in the screening room</p>
+
+<h3>Quickstart</h3>
+<ul>
+  <li>Check all buttons: Make sure silent alarms are off and the term door is closed</li>
+  <li>Reset keypad</li>
+</ul>
+
+<h3>Policies</h3>
+<ul>
+  <li>At least 1 CR personnel must be inside the control room at all times</li>
+  <li>Shifts must be fixed to 20 minutes</li>
+</ul>
+
+<h3>Reminder</h3>
+<p>If you hear a buzzer, it’s from the term room door. Check who it is with the old monitor (camera 2) and allow them to pass.</p>
+
+<h3>Visual screening guide</h3>
+<ul>
+  <li>Tell person to stand on the red circle</li>
+  <li>Tell person to spin slowly with their hands up</li>
+</ul>
+
+<h3>Remember</h3>
+<ul>
+  <li>If someone has contraband, tell them to double check that they dropped all guns. If they dont drop the gun, terminate them and send their username in the blacklists channel.</li>
+</ul>
+
+<p>All people who enter must be blacklist checked. Check <a href="blacklist.html">here</a>.</p>
+
+<h3>Types of blacklists</h3>
+<ul>
+  <li><strong>Normal blacklist</strong> – Nothing written</li>
+  <li><strong>Soft blacklist</strong> – Don’t use lethal force unless necessary</li>
+  <li><strong>Kill on Sight / High Value Target</strong> – Use lethal force, kill no matter the cost</li>
+</ul>
+
+<p class="note"><strong>Code for CR:</strong><br />
+If you leak this code, you WILL be blacklisted.</p>
 </main>
 </body>
 </html>
-

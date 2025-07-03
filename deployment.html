@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Deployment Timing - The Complex</title>
+<title>Deployment Timer - The Complex</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -13,16 +13,19 @@
     color: #222;
   }
 
-      header {
+  header {
     background: #2c3e50;
     color: white;
-    padding: 10px 20px;
-    display: flex; align-items: center;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
   }
+
   header img.logo {
-    height: 40px;
-    width: 40px;
+    height: 36px;
+    width: 36px;
     cursor: pointer;
+    margin-right: 15px;
   }
 
   header a.home-btn {
@@ -30,16 +33,10 @@
     text-decoration: none;
     font-weight: bold;
     margin-right: auto;
+    font-size: 14px;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
-  }
-
-  header a.home-btn svg {
-    width: 20px;
-    height: 20px;
-    fill: white;
   }
 
   .timeline-container {
@@ -105,12 +102,11 @@
 </style>
 </head>
 <body>
+
 <header>
-  <a href="index.html"><img src="assets/logo.png" alt="Logo" /></a>
-  <h2>The Complex - Deployment Timing</h2>
+  <a href="index.html" class="home-btn" title="Home">Home</a>
+  <a href="index.html"><img src="assets/logo.png" alt="The Complex Logo" class="logo" /></a>
 </header>
-
-
 
 <div class="timeline-container">
   <label for="timezone" class="timezone-select">Timezone:</label>
@@ -198,7 +194,6 @@
 </div>
 
 <script>
-  // Helper: create array from hour A to B (inclusive)
   function generateRange(start, end) {
     const result = [];
     for (let i = start; i <= end; i++) result.push(i);

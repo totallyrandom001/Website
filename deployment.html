@@ -204,12 +204,28 @@
   // === INPUT DATA: Names + hours in GMT+3 ===
   // Each entry: {name: "Name", hours: [0..23]}
   // Hours are relative to GMT+3!
-  const users = [
-    { name: "Bob", hours: [0, 1, 2] },           // 12am-3am GMT+3
-    { name: "Alice", hours: [1, 20, 21, 22] },  // 1am, 8pm-10pm GMT+3
-    { name: "Jane", hours: [4, 5, 6] },          // 4am-6am GMT+3
-    { name: "Carl", hours: [13, 14, 15] }        // 1pm-3pm GMT+3
-  ];
+  // Helper: create array from hour A to B (inclusive)
+function generateRange(start, end) {
+  const result = [];
+  for (let i = start; i <= end; i++) result.push(i);
+  return result;
+}
+
+const users = [
+  { name: "totally", hours: generateRange(9, 23) },
+  { name: "krown", hours: generateRange(7, 22) },
+  { name: "shade", hours: [...generateRange(16, 23), ...generateRange(0, 5)] },
+  { name: "nugget", hours: generateRange(7, 13) },
+  { name: "zombie", hours: [...generateRange(15, 23), ...generateRange(0, 6)] },
+  { name: "sad", hours: [...generateRange(12, 23), 0] },
+  { name: "ruan", hours: [...generateRange(15, 23), 0] },
+  { name: "geg", hours: [22, 23, 0] },
+  { name: "maize", hours: generateRange(9, 11) },
+  { name: "pump", hours: [10, 11] }
+];
+
+    // bob Alice Jane and Carl 
+    
 
   // The base timezone offset of input data (GMT+3)
   const inputBaseOffset = 3;

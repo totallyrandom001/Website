@@ -53,7 +53,7 @@
       margin-top: 10px;
       padding-left: 20px;
     }
-    textarea {
+    .info-field {
       display: block;
       width: 100%;
       margin: 8px 0;
@@ -61,8 +61,8 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 14px;
-      resize: vertical;
-      min-height: 60px;
+      background: #fff;
+      white-space: pre-wrap;
     }
   </style>
 </head>
@@ -74,57 +74,65 @@
   <main>
     <h1>Departments</h1>
 
-    <details>
+    <!-- Security Department -->
+    <details open>
       <summary>Security Department</summary>
       <div class="subdepartment">
-        <details>
-          <summary>SECURITY Department</summary>
-          <textarea placeholder="Info 1"></textarea>
-          <textarea placeholder="Info 2"></textarea>
-          <textarea placeholder="Info 3"></textarea>
+        <details open>
+          <summary>Security</summary>
+          <div class="info-field"><strong>Purpose:</strong> Maintains general order within the facility, does a wide range of tasks.</div>
+          <div class="info-field"><strong>Loadout:</strong> SWAT — Sop+Holo+fold+red+os, Sidearm: any pistol but not deagle and no attachments</div>
+          <div class="info-field"><strong>Quickswitch:</strong> !sa swat | Sop+Holo+fold+red+os</div>
         </details>
       </div>
     </details>
 
-    <details>
+    <!-- Internal Security Department -->
+    <details open>
       <summary>Internal Security Department</summary>
       <div class="subdepartment">
-        <details>
+
+        <details open>
+          <summary>Hammer Down</summary>
+          <div class="info-field"><strong>Purpose:</strong> Called in on Code 5s, tasked with clearing out and securing the base.</div>
+          <div class="info-field"><strong>Loadout:</strong> HCS — MG4+Fold+Flash+Red, M4+er+Eo+muzzle+range, Mac+Holo+Fold+Red+Os, Des+Red+Holo+Fold+Os, Med, Def, Ham, NV</div>
+          <div class="info-field"><strong>Quickswitch:</strong> !s MG4+Fold+Flash+Red | !s M4+er+Eo+muzzle+range | !sMac+Holo+Fold+Red+Os | !s Des+Red+Holo+Fold+Os | !s Med | !s Def | !s Ham | !s NV | !sa HCS</div>
+        </details>
+
+        <details open>
+          <summary>Riot Control</summary>
+          <div class="info-field"><strong>Purpose:</strong> Called in if there's anything the security department can't handle. <br><em>This subdepartment requires the Extra Weapons Gamepass!</em></div>
+          <div class="info-field"><strong>Loadout:</strong> RIOT — Riot, Mac+Os+Holo+Fold+Green, Spas+Eo+Os+Red+Fold, Med, Def, Fire, NV</div>
+          <div class="info-field"><strong>Quickswitch:</strong> !s Riot | !s Mac+Os+Holo+Fold+Green | !s Spas+Eo+Os+Red+Fold | !s Med | !sa riot</div>
+        </details>
+
+        <details open>
           <summary>Heavy</summary>
-          <textarea placeholder="Heavy Info 1"></textarea>
-          <textarea placeholder="Heavy Info 2"></textarea>
-          <textarea placeholder="Heavy Info 3"></textarea>
+          <div class="info-field"><strong>Purpose:</strong> Like the security department, but just armed with much more heavy guns for high-risk tasks in the base.</div>
+          <div class="info-field"><strong>Loadout:</strong> SAS — MCX+Acog+Os+Fold+Red, G3+Acog+Flash+Fold, CZ+Fold+Red+Extend+Holo+Os</div>
+          <div class="info-field"><strong>Quickswitch:</strong> !sa sas | !s MCX+Acog+Os+Fold+Red | !s G3+Acog+Flash+Fold | !s CZ+Fold+Red+Extend+Holo+Os</div>
         </details>
-        <details>
-          <summary>Hammer down</summary>
-          <textarea placeholder="Hammer Down Info 1"></textarea>
-          <textarea placeholder="Hammer Down Info 2"></textarea>
-          <textarea placeholder="Hammer Down Info 3"></textarea>
-        </details>
-        <details>
-          <summary>Riot control</summary>
-          <textarea placeholder="Riot Control Info 1"></textarea>
-          <textarea placeholder="Riot Control Info 2"></textarea>
-          <textarea placeholder="Riot Control Info 3"></textarea>
-        </details>
+
       </div>
     </details>
 
-    <details>
+    <!-- Operations Department -->
+    <details open>
       <summary>Operations Department</summary>
       <div class="subdepartment">
-        <details>
-          <summary>Hitman</summary>
-          <textarea placeholder="Hitman Info 1"></textarea>
-          <textarea placeholder="Hitman Info 2"></textarea>
-          <textarea placeholder="Hitman Info 3"></textarea>
-        </details>
-        <details>
+
+        <details open>
           <summary>Operative</summary>
-          <textarea placeholder="Operative Info 1"></textarea>
-          <textarea placeholder="Operative Info 2"></textarea>
-          <textarea placeholder="Operative Info 3"></textarea>
+          <div class="info-field"><strong>Purpose:</strong> The security department of the outside.</div>
+          <div class="info-field"><strong>Loadout:</strong> VDV — sop+fold+holo+red+os, rem+fold+red+os+eo, CZ+fold+red+os+eo+extend, med, band, def, pick, nv</div>
+          <div class="info-field"><strong>Quickswitch:</strong> N/A</div>
         </details>
+
+        <details open>
+          <summary>Hitman</summary>
+          <div class="info-field"><strong>Status:</strong> This department is closed to active enlisting. Please open a ticket to apply for this rank.</div>
+        </details>
+
       </div>
     </details>
 

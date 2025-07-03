@@ -106,14 +106,12 @@
 </style>
 </head>
 <body>
-
 <header>
-  <a href="index.html" class="home-btn" title="Home">
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-    Home
-  </a>
-  <img src="YOUR_LOGO_URL_HERE" alt="The Complex Logo" class="logo" />
+  <a href="index.html"><img src="assets/logo.png" alt="Logo" /></a>
+  <h2>The Complex - CR Guide</h2>
 </header>
+
+
 
 <div class="timeline-container">
   <label for="timezone" class="timezone-select">Timezone:</label>
@@ -201,68 +199,54 @@
 </div>
 
 <script>
-  // === INPUT DATA: Names + hours in GMT+3 ===
-  // Each entry: {name: "Name", hours: [0..23]}
-  // Hours are relative to GMT+3!
   // Helper: create array from hour A to B (inclusive)
-function generateRange(start, end) {
-  const result = [];
-  for (let i = start; i <= end; i++) result.push(i);
-  return result;
-}
+  function generateRange(start, end) {
+    const result = [];
+    for (let i = start; i <= end; i++) result.push(i);
+    return result;
+  }
 
-const users = [
-  { name: "totally", hours: generateRange(9, 23) },
-  { name: "krown", hours: generateRange(7, 22) },
-  { name: "shade", hours: [...generateRange(16, 23), ...generateRange(0, 5)] },
-  { name: "nugget", hours: generateRange(7, 13) },
-  { name: "zombie", hours: [...generateRange(15, 23), ...generateRange(0, 6)] },
-  { name: "sad", hours: [...generateRange(12, 23), 0] },
-  { name: "ruan", hours: [...generateRange(15, 23), 0] },
-  { name: "geg", hours: [22, 23, 0] },
-  { name: "maize", hours: generateRange(9, 11) },
-  { name: "pump", hours: [10, 11] }
-];
+  const users = [
+    { name: "totally", hours: generateRange(9, 23) },
+    { name: "krown", hours: generateRange(7, 22) },
+    { name: "shade", hours: [...generateRange(16, 23), ...generateRange(0, 5)] },
+    { name: "nugget", hours: generateRange(7, 13) },
+    { name: "zombie", hours: [...generateRange(15, 23), ...generateRange(0, 6)] },
+    { name: "sad", hours: [...generateRange(12, 23), 0] },
+    { name: "ruan", hours: [...generateRange(15, 23), 0] },
+    { name: "geg", hours: [22, 23, 0] },
+    { name: "maize", hours: generateRange(9, 11) },
+    { name: "pump", hours: [10, 11] }
+  ];
 
-    // bob Alice Jane and Carl 
-    
-
-  // The base timezone offset of input data (GMT+3)
   const inputBaseOffset = 3;
 
-  // Function to clear all names from the table spans
   function clearNames() {
     document.querySelectorAll(".timeline-table span.name").forEach(span => {
       span.textContent = "";
     });
   }
 
-  // Function to map GMT+3 hours to selected timezone and update display
   function updateTimeline() {
     clearNames();
 
     const select = document.getElementById("timezone");
     const selectedOffset = Number(select.value);
-
-    // Calculate hour difference to shift (selected timezone - input timezone)
-    // For example if input is GMT+3 and selected is GMT-3 => shift = -6 hours
     const hourShift = selectedOffset - inputBaseOffset;
 
     users.forEach(user => {
       user.hours.forEach(inputHour => {
-        // Shift hour according to timezone difference
         let shiftedHour = inputHour + hourShift;
         if (shiftedHour < 0) shiftedHour += 24;
         if (shiftedHour > 23) shiftedHour -= 24;
 
-        // Find the right table and cell index
         let table, cellIndex;
         if (shiftedHour < 12) {
           table = document.getElementById("table1");
-          cellIndex = shiftedHour;  // 0 = 12am, 11 = 11am
+          cellIndex = shiftedHour;
         } else {
           table = document.getElementById("table2");
-          cellIndex = shiftedHour - 12; // 12 = 12pm, 23 = 11pm
+          cellIndex = shiftedHour - 12;
         }
 
         const span = table.rows[1].cells[cellIndex].querySelector("span.name");
